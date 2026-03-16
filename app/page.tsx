@@ -1,5 +1,24 @@
 "use client";
+import { useState } from "react";
 export default function Home() {
+  const [formState, setFormState] = useState<"idle"|"loading"|"success"|"error">("idle");
+  const [formData, setFormData] = useState({ name: "", clinic: "", email: "", website: "" });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) setFormState("success");
+      else setFormState("error");
+    } catch {
+      setFormState("error");
+    }
+  };
   return (
     <main className="min-h-screen bg-slate-950 text-white">
 
@@ -201,33 +220,48 @@ export default function Home() {
             15-minute call. We find the 3 biggest workflow gaps in your clinic and show you exactly what fixing them would mean in recovered revenue. No pitch, no pressure.
           </p>
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-left">
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm text-slate-400 mb-1">Your name</label>
-                  <input type="text" placeholder="Dr. Sarah Chen" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+            {formState === "success" ? (
+              <div className="text-center py-8">
+                <div className="text-5xl mb-4">✅</div>
+                <h3 className="text-2xl font-bold mb-2">Got it!</h3>
+                <p className="text-slate-400">We'll reach out within 2 business hours to schedule your audit.</p>
+              </div>
+            ) : (
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-slate-400 mb-1">Your name</label>
+                    <input type="text" placeholder="Dr. Sarah Chen" required
+                      value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-slate-400 mb-1">Clinic name</label>
+                    <input type="text" placeholder="Vancouver Dental"
+                      value={formData.clinic} onChange={e => setFormData({...formData, clinic: e.target.value})}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-1">Clinic name</label>
-                  <input type="text" placeholder="Vancouver Dental" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                  <label className="block text-sm text-slate-400 mb-1">Email</label>
+                  <input type="email" placeholder="you@yourclinic.com" required
+                    value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})}
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
                 </div>
-              </div>
-              <div>
-                <label className="block text-sm text-slate-400 mb-1">Email</label>
-                <input type="email" placeholder="you@yourclinic.com" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
-              </div>
-              <div>
-                <label className="block text-sm text-slate-400 mb-1">Clinic website (optional)</label>
-                <input type="url" placeholder="https://yourclinic.com" className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-4 rounded-xl font-semibold text-lg transition mt-2"
-              >
-                Book My Free Audit →
-              </button>
-              <p className="text-slate-500 text-xs text-center">We'll reply within 2 business hours. No spam, ever.</p>
-            </form>
+                <div>
+                  <label className="block text-sm text-slate-400 mb-1">Clinic website (optional)</label>
+                  <input type="url" placeholder="https://yourclinic.com"
+                    value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})}
+                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                </div>
+                <button type="submit" disabled={formState === "loading"}
+                  className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white py-4 rounded-xl font-semibold text-lg transition mt-2">
+                  {formState === "loading" ? "Sending..." : "Book My Free Audit →"}
+                </button>
+                {formState === "error" && <p className="text-red-400 text-sm text-center">Something went wrong — email us directly at andrei@ohanaworkflow.com</p>}
+                <p className="text-slate-500 text-xs text-center">We'll reply within 2 business hours. No spam, ever.</p>
+              </form>
+            )}
           </div>
         </div>
       </section>
