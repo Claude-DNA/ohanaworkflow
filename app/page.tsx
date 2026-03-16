@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import ROICalculator from "./components/ROICalculator";
+import ActivityFeed from "./components/ActivityFeed";
 export default function Home() {
   const [formState, setFormState] = useState<"idle"|"loading"|"success"|"error">("idle");
   const [formData, setFormData] = useState({ name: "", clinic: "", email: "", website: "" });
@@ -212,6 +214,15 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ROI CALCULATOR */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">See your number</h2>
+          <p className="text-slate-400 text-center mb-10">Most clinic owners are surprised. The math is simple — the loss isn't.</p>
+          <ROICalculator />
+        </div>
+      </section>
+
       {/* CONTACT */}
       <section id="contact" className="py-24 px-6 bg-slate-900/50">
         <div className="max-w-2xl mx-auto text-center">
@@ -265,6 +276,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ActivityFeed />
 
       {/* FOOTER */}
       <footer className="py-10 px-6 border-t border-slate-800">
