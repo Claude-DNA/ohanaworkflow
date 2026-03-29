@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ohana Workflow — AI Automation for Clinics",
-  description: "We build AI-powered front desk systems for dental, physio, and wellness clinics in Vancouver. Stop losing patients to missed calls and slow response times.",
+  title: "Ohana Workflow — AI Automation Agency",
+  description: "We build custom AI automation systems that save your team 20+ hours per week. Intelligent workflows for operations, sales, support, and more.",
   openGraph: {
-    title: "Ohana Workflow — AI Automation for Clinics",
-    description: "Stop losing patients to missed calls. We automate your front desk with AI.",
+    title: "Ohana Workflow — AI Automation Agency",
+    description: "Custom AI automation systems that save your team 20+ hours per week.",
     url: "https://ohanaworkflow.com",
   }
 };
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-slate-950 text-white antialiased">{children}</body>
+      <body className="bg-white text-slate-900 antialiased">{children}</body>
     </html>
   );
 }

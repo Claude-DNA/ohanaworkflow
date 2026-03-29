@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, clinic, email, website } = body;
+    const { name, company, email, website } = body;
 
     if (!name || !email) {
       return NextResponse.json({ error: "Name and email required" }, { status: 400 });
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
     const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
-    const message = `🏥 NEW LEAD — ohanaworkflow.com\n\n👤 Name: ${name}\n🏢 Clinic: ${clinic || "not provided"}\n📧 Email: ${email}\n🌐 Website: ${website || "not provided"}\n\n⏰ ${new Date().toLocaleString("en-CA", { timeZone: "America/Vancouver" })} PST`;
+    const message = `🚀 NEW LEAD — ohanaworkflow.com\n\n👤 Name: ${name}\n🏢 Company: ${company || "not provided"}\n📧 Email: ${email}\n🌐 Website: ${website || "not provided"}\n\n⏰ ${new Date().toLocaleString("en-CA", { timeZone: "America/Vancouver" })} PST`;
 
     if (telegramToken && telegramChatId) {
       await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       await fetch(n8nWebhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, clinic, email, website, source: "ohanaworkflow.com", timestamp: new Date().toISOString() }),
+        body: JSON.stringify({ name, company, email, website, source: "ohanaworkflow.com", timestamp: new Date().toISOString() }),
       }).catch(() => {}); // non-blocking
     }
 

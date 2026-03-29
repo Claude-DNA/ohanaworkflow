@@ -2,67 +2,67 @@
 import { useState } from "react";
 
 export default function ROICalculator() {
-  const [patientValue, setPatientValue] = useState("");
-  const [missedCalls, setMissedCalls] = useState("");
+  const [hourlyRate, setHourlyRate] = useState("");
+  const [hoursWasted, setHoursWasted] = useState("");
 
-  const pv = parseFloat(patientValue) || 0;
-  const mc = parseFloat(missedCalls) || 0;
-  const bookingRate = 0.35; // 35% of missed calls are bookable
-  const conversionRate = 0.6; // 60% of bookable convert
-  const monthlyLeak = Math.round(pv * mc * bookingRate * conversionRate * 22);
-  const annualLeak = monthlyLeak * 12;
-  const showResult = pv > 0 && mc > 0;
+  const hr = parseFloat(hourlyRate) || 0;
+  const hw = parseFloat(hoursWasted) || 0;
+  const teamSize = 5; // assume small team
+  const automationCapture = 0.7; // 70% of manual work is automatable
+  const monthlySavings = Math.round(hr * hw * teamSize * automationCapture * 4.3);
+  const annualSavings = monthlySavings * 12;
+  const showResult = hr > 0 && hw > 0;
 
   return (
-    <div className="bg-slate-900 border border-indigo-900 rounded-2xl p-8 max-w-2xl mx-auto">
-      <div className="text-indigo-400 text-sm font-bold uppercase tracking-wider mb-2">Revenue Leak Calculator</div>
-      <h3 className="text-2xl font-bold mb-1">How much is your after-hours silence costing you?</h3>
-      <p className="text-slate-400 text-sm mb-6">35% of booking attempts happen outside business hours. Here's what that means for your clinic.</p>
+    <div className="bg-white border border-slate-200 rounded-2xl p-8 max-w-2xl mx-auto shadow-sm">
+      <div className="text-indigo-600 text-sm font-bold uppercase tracking-wider mb-2">Time Savings Calculator</div>
+      <h3 className="text-2xl font-bold mb-1 text-slate-900">How much is manual work costing your team?</h3>
+      <p className="text-slate-500 text-sm mb-6">Most teams spend 20+ hours per week on tasks that AI can handle.</p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-6">
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-2">
-            Average patient value
-            <span className="text-slate-500 font-normal ml-1">(lifetime, in $)</span>
+          <label className="block text-sm font-medium text-slate-700 mb-2">
+            Average hourly cost per team member
+            <span className="text-slate-400 font-normal ml-1">(fully loaded)</span>
           </label>
           <div className="relative">
             <span className="absolute left-4 top-3.5 text-slate-400">$</span>
             <input
               type="number"
-              placeholder="2,500"
-              value={patientValue}
-              onChange={e => setPatientValue(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-lg pl-8 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              placeholder="50"
+              value={hourlyRate}
+              onChange={e => setHourlyRate(e.target.value)}
+              className="w-full bg-white border border-slate-200 rounded-lg pl-8 pr-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
             />
           </div>
-          <p className="text-slate-500 text-xs mt-1">Average for Vancouver dental: $2,500 · Physio: $800 · Wellness: $1,200</p>
+          <p className="text-slate-400 text-xs mt-1">Include salary, benefits, overhead</p>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-2">
-            Missed / unanswered calls per day
+          <label className="block text-sm font-medium text-slate-700 mb-2">
+            Hours spent on manual/repetitive tasks per week
           </label>
           <input
             type="number"
-            placeholder="8"
-            value={missedCalls}
-            onChange={e => setMissedCalls(e.target.value)}
-            className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            placeholder="15"
+            value={hoursWasted}
+            onChange={e => setHoursWasted(e.target.value)}
+            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
           />
-          <p className="text-slate-500 text-xs mt-1">Check your voicemail count from last week</p>
+          <p className="text-slate-400 text-xs mt-1">Data entry, copy-paste, manual follow-ups, reporting</p>
         </div>
       </div>
 
       {showResult && (
-        <div className="bg-red-950 border border-red-900 rounded-xl p-6 mb-6">
-          <p className="text-red-400 text-sm font-medium mb-1">Your estimated monthly revenue leak</p>
-          <p className="text-5xl font-bold text-white mb-1">
-            ${monthlyLeak.toLocaleString()}
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6">
+          <p className="text-emerald-700 text-sm font-medium mb-1">Your estimated monthly savings</p>
+          <p className="text-5xl font-bold text-slate-900 mb-1">
+            ${monthlySavings.toLocaleString()}
           </p>
-          <p className="text-red-400 text-sm">
-            That's <span className="font-bold">${annualLeak.toLocaleString()} per year</span> walking out the door after hours.
+          <p className="text-emerald-700 text-sm">
+            That&apos;s <span className="font-bold">${annualSavings.toLocaleString()} per year</span> you could save with automation.
           </p>
           <p className="text-slate-400 text-xs mt-3">
-            Based on: {mc} missed calls/day × 35% bookable × 60% conversion × 22 working days × ${pv.toLocaleString()} avg value
+            Based on: {hw}h/week &times; 5 team members &times; 70% automatable &times; ${hr}/hr &times; 4.3 weeks
           </p>
         </div>
       )}
@@ -70,15 +70,15 @@ export default function ROICalculator() {
       {showResult && (
         <a
           href="#contact"
-          className="block w-full text-center bg-indigo-600 hover:bg-indigo-500 text-white py-4 rounded-xl font-semibold text-lg transition"
+          className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-semibold text-lg transition shadow-md shadow-indigo-200"
         >
-          Stop the leak — get your free audit →
+          Get your free workflow audit
         </a>
       )}
 
       {!showResult && (
-        <div className="text-center text-slate-500 text-sm py-4 border border-dashed border-slate-700 rounded-xl">
-          Enter your numbers above to see your revenue leak
+        <div className="text-center text-slate-400 text-sm py-4 border border-dashed border-slate-200 rounded-xl">
+          Enter your numbers above to see your potential savings
         </div>
       )}
     </div>

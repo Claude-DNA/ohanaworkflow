@@ -2,9 +2,10 @@
 import { useState } from "react";
 import ROICalculator from "./components/ROICalculator";
 import ActivityFeed from "./components/ActivityFeed";
+
 export default function Home() {
   const [formState, setFormState] = useState<"idle"|"loading"|"success"|"error">("idle");
-  const [formData, setFormData] = useState({ name: "", clinic: "", email: "", website: "" });
+  const [formData, setFormData] = useState({ name: "", company: "", email: "", website: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,86 +22,90 @@ export default function Home() {
       setFormState("error");
     }
   };
+
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-white text-slate-900">
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="text-xl font-bold text-white">Ohana<span className="text-indigo-400">Workflow</span></span>
-          <a
-            href="#contact"
-            className="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-lg text-sm font-semibold transition"
-          >
-            Book Free Audit
-          </a>
+          <span className="text-xl font-bold text-slate-900">Ohana<span className="text-indigo-600">Workflow</span></span>
+          <div className="flex items-center gap-6">
+            <a href="#how" className="hidden sm:block text-sm text-slate-500 hover:text-slate-900 transition">How it works</a>
+            <a href="#pricing" className="hidden sm:block text-sm text-slate-500 hover:text-slate-900 transition">Pricing</a>
+            <a
+              href="#contact"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition shadow-sm"
+            >
+              Book Free Audit
+            </a>
+          </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="pt-32 pb-24 px-6">
+      <section className="pt-36 pb-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-indigo-950 text-indigo-300 text-sm font-medium px-4 py-1.5 rounded-full mb-6 border border-indigo-800">
-            AI Automation for Vancouver Clinics
+          <div className="inline-block bg-indigo-50 text-indigo-700 text-sm font-medium px-4 py-1.5 rounded-full mb-6 border border-indigo-100">
+            AI Automation Agency
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
-            Your clinic is losing patients<br />
-            <span className="text-indigo-400">after hours.</span>
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-slate-900">
+            Stop doing work<br />
+            <span className="text-indigo-600">a machine should do.</span>
           </h1>
-          <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-            35% of appointment attempts happen outside business hours.
-            We build AI front desk systems that book, follow up, and qualify leads —
-            while your team focuses on care.
+          <p className="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+            We build custom AI automation systems that save your team 20+ hours per week.
+            Intelligent workflows for operations, sales, support, and everything in between.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition shadow-md shadow-indigo-200"
             >
-              Get Your Free 3-Leak Audit
+              Get Your Free Workflow Audit
             </a>
             <a
               href="#how"
-              className="border border-slate-700 hover:border-slate-500 text-slate-300 px-8 py-4 rounded-xl font-semibold text-lg transition"
+              className="border border-slate-200 hover:border-slate-300 text-slate-700 px-8 py-4 rounded-xl font-semibold text-lg transition hover:bg-slate-50"
             >
               See How It Works
             </a>
           </div>
-          <p className="text-slate-500 text-sm mt-4">No obligation. 15-minute call. We show you exactly where you're losing patients.</p>
+          <p className="text-slate-400 text-sm mt-4">No obligation. 15-minute call. We show you exactly where you're losing time.</p>
         </div>
       </section>
 
       {/* PAIN POINTS */}
-      <section className="py-20 px-6 bg-slate-900/50">
+      <section className="py-20 px-6 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Sound familiar?</h2>
-          <p className="text-slate-400 text-center mb-12">These are the 3 most common workflow leaks we find in Vancouver clinics.</p>
+          <p className="text-slate-500 text-center mb-12">These are the workflow leaks we find in almost every business we audit.</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: "📞",
-                title: "Calls go to voicemail after 5pm",
-                desc: "Patients try to book after work. Nobody answers. They call the next clinic on Google Maps. You never knew they called.",
-                stat: "35% of booking attempts happen outside business hours"
+                icon: "📥",
+                title: "Manual data entry eating your day",
+                desc: "Your team copies data between apps, updates spreadsheets by hand, and reformats the same info across systems. Hours lost, every single day.",
+                stat: "Teams spend an average of 4.5 hours/day on repetitive manual tasks"
               },
               {
-                icon: "📋",
-                title: "Intake forms sit unread",
-                desc: "New patient fills out your online form on Friday night. Nobody follows up until Monday. They've already booked elsewhere.",
-                stat: "Leads that aren't followed up within 1 hour convert at 7× lower rate"
+                icon: "🔔",
+                title: "Leads slip through the cracks",
+                desc: "A prospect fills out your form Friday evening. Nobody follows up until Monday. By then, they've signed with your competitor.",
+                stat: "Leads contacted within 5 minutes are 9x more likely to convert"
               },
               {
-                icon: "⭐",
-                title: "Bad reviews about 'no one answers'",
-                desc: "You have 1-star reviews saying patients can't reach you. Every new patient reads them before deciding.",
-                stat: "1 negative review costs an average of 22 potential patients"
+                icon: "🔄",
+                title: "Your tools don't talk to each other",
+                desc: "CRM, email, project management, invoicing — they all live in separate worlds. Your team is the glue holding it all together.",
+                stat: "The average company uses 130+ SaaS apps with little to no integration"
               }
             ].map((item, i) => (
-              <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+              <div key={i} className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition">
                 <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-slate-400 mb-4">{item.desc}</p>
-                <p className="text-indigo-400 text-sm font-medium border-t border-slate-800 pt-4">{item.stat}</p>
+                <h3 className="text-xl font-semibold mb-3 text-slate-900">{item.title}</h3>
+                <p className="text-slate-500 mb-4">{item.desc}</p>
+                <p className="text-indigo-600 text-sm font-medium border-t border-slate-100 pt-4">{item.stat}</p>
               </div>
             ))}
           </div>
@@ -111,18 +116,18 @@ export default function Home() {
       <section id="how" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">How it works</h2>
-          <p className="text-slate-400 text-center mb-12">We install an AI front desk alongside your existing team — not instead of them.</p>
+          <p className="text-slate-500 text-center mb-12">We plug AI into your existing tools — not replace them.</p>
           <div className="space-y-6">
             {[
-              { step: "01", title: "Free 15-min audit", desc: "We scan your website and booking flow, identify your specific leaks, and show you exactly what you're losing. No obligation." },
-              { step: "02", title: "We build your AI front desk", desc: "In 2 weeks, we deploy a system tailored to your clinic: AI chatbot, intake automation, appointment reminders, lead follow-up. Your staff doesn't change how they work." },
-              { step: "03", title: "Patients stop falling through the cracks", desc: "After-hours inquiries get answered. New patient forms trigger immediate follow-up. No-shows drop. Your team handles the work — the AI handles the gaps." },
+              { step: "01", title: "Free 15-min workflow audit", desc: "We map your current processes, identify bottlenecks, and show you exactly where automation will save the most time. No obligation." },
+              { step: "02", title: "We build your custom system", desc: "In 1-3 weeks, we deploy AI automations tailored to your business: lead routing, data sync, document processing, customer follow-ups, and more. Your team doesn't change how they work." },
+              { step: "03", title: "Your team gets hours back", desc: "Repetitive work disappears. Leads get instant responses. Data flows between your tools automatically. Your team focuses on work that actually matters." },
             ].map((item, i) => (
-              <div key={i} className="flex gap-6 bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                <div className="text-4xl font-bold text-indigo-800 shrink-0">{item.step}</div>
+              <div key={i} className="flex gap-6 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+                <div className="text-4xl font-bold text-indigo-200 shrink-0">{item.step}</div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-slate-400">{item.desc}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-slate-900">{item.title}</h3>
+                  <p className="text-slate-500">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -130,60 +135,86 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WHAT WE AUTOMATE */}
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">What we automate</h2>
+          <p className="text-slate-500 text-center mb-12">If it's repetitive, rule-based, or time-consuming — we can probably automate it.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: "⚡", title: "Lead Response", desc: "Instant follow-up, qualification, and routing" },
+              { icon: "📄", title: "Document Processing", desc: "Extract, classify, and route documents with AI" },
+              { icon: "🔗", title: "App Integrations", desc: "Connect your CRM, email, Slack, and 200+ tools" },
+              { icon: "📊", title: "Reporting", desc: "Auto-generated dashboards and status updates" },
+              { icon: "💬", title: "Customer Support", desc: "AI chatbots and ticket routing" },
+              { icon: "📧", title: "Email Workflows", desc: "Smart sequences, parsing, and auto-replies" },
+              { icon: "📋", title: "Onboarding", desc: "Automated client and employee onboarding flows" },
+              { icon: "🔁", title: "Data Sync", desc: "Keep all your systems in sync, automatically" },
+            ].map((item, i) => (
+              <div key={i} className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                <div className="text-2xl mb-3">{item.icon}</div>
+                <h3 className="font-semibold mb-1 text-slate-900">{item.title}</h3>
+                <p className="text-slate-500 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PACKAGES */}
-      <section id="pricing" className="py-20 px-6 bg-slate-900/50">
+      <section id="pricing" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4">Simple, clear packages</h2>
-          <p className="text-slate-400 text-center mb-12">No surprise costs. No long-term lock-in. Cancel anytime.</p>
+          <p className="text-slate-500 text-center mb-12">No surprise costs. No long-term lock-in. Cancel anytime.</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 name: "Starter",
-                price: "$1,999",
+                price: "$2,500",
                 period: "one-time setup",
-                desc: "For clinics that want to stop losing leads from their website.",
-                features: ["AI chatbot on your website", "FAQ automation", "Lead capture & routing", "Setup in 5 business days"],
+                desc: "For teams that want to automate their first workflow and see results fast.",
+                features: ["1 custom automation workflow", "Up to 3 app integrations", "AI chatbot or lead capture", "Setup in 5 business days", "30 days of support"],
                 cta: "Get Started",
                 highlight: false
               },
               {
                 name: "Growth",
-                price: "$3,500",
-                period: "setup + $399/mo",
-                desc: "For clinics ready to automate their full intake and follow-up workflow.",
-                features: ["Everything in Starter", "Appointment reminder sequences", "New patient intake automation", "Lead qualification & follow-up", "Missed-call automation", "Monthly optimization"],
+                price: "$5,000",
+                period: "setup + $499/mo",
+                desc: "For businesses ready to automate multiple workflows across their operations.",
+                features: ["Everything in Starter", "Up to 5 automation workflows", "Unlimited app integrations", "AI document processing", "Lead qualification & routing", "Monthly optimization & support"],
                 cta: "Book a Call",
                 highlight: true
               },
               {
-                name: "Full Stack",
-                price: "$5,500",
-                period: "setup + $599/mo",
-                desc: "For clinics that want to fully automate front desk operations.",
-                features: ["Everything in Growth", "CRM integration", "Google Reviews automation", "Reporting dashboard", "Staff training included", "Priority support"],
-                cta: "Book a Call",
+                name: "Scale",
+                price: "Custom",
+                period: "tailored to your needs",
+                desc: "For companies that want a fully automated operations layer.",
+                features: ["Everything in Growth", "Unlimited workflows", "Custom AI model training", "CRM & ERP integration", "Team training included", "Dedicated account manager"],
+                cta: "Let's Talk",
                 highlight: false
               }
             ].map((pkg, i) => (
-              <div key={i} className={`rounded-2xl p-8 border ${pkg.highlight ? "bg-indigo-950 border-indigo-600" : "bg-slate-900 border-slate-800"}`}>
+              <div key={i} className={`rounded-2xl p-8 border transition ${pkg.highlight ? "bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-200" : "bg-white border-slate-200 shadow-sm"}`}>
                 {pkg.highlight && (
-                  <div className="text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">Most Popular</div>
+                  <div className="text-indigo-200 text-xs font-bold uppercase tracking-wider mb-3">Most Popular</div>
                 )}
-                <h3 className="text-xl font-bold mb-1">{pkg.name}</h3>
-                <div className="text-3xl font-bold mb-1">{pkg.price}</div>
-                <div className="text-slate-400 text-sm mb-4">{pkg.period}</div>
-                <p className="text-slate-400 text-sm mb-6">{pkg.desc}</p>
+                <h3 className={`text-xl font-bold mb-1 ${pkg.highlight ? "text-white" : "text-slate-900"}`}>{pkg.name}</h3>
+                <div className={`text-3xl font-bold mb-1 ${pkg.highlight ? "text-white" : "text-slate-900"}`}>{pkg.price}</div>
+                <div className={`text-sm mb-4 ${pkg.highlight ? "text-indigo-200" : "text-slate-400"}`}>{pkg.period}</div>
+                <p className={`text-sm mb-6 ${pkg.highlight ? "text-indigo-100" : "text-slate-500"}`}>{pkg.desc}</p>
                 <ul className="space-y-2 mb-8">
                   {pkg.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-slate-300">
-                      <span className="text-indigo-400 shrink-0 mt-0.5">✓</span>
+                    <li key={j} className={`flex items-start gap-2 text-sm ${pkg.highlight ? "text-indigo-50" : "text-slate-600"}`}>
+                      <span className={`shrink-0 mt-0.5 ${pkg.highlight ? "text-indigo-200" : "text-indigo-600"}`}>&#10003;</span>
                       {f}
                     </li>
                   ))}
                 </ul>
                 <a
                   href="#contact"
-                  className={`block text-center py-3 rounded-xl font-semibold transition ${pkg.highlight ? "bg-indigo-600 hover:bg-indigo-500 text-white" : "border border-slate-700 hover:border-slate-500 text-slate-300"}`}
+                  className={`block text-center py-3 rounded-xl font-semibold transition ${pkg.highlight ? "bg-white text-indigo-600 hover:bg-indigo-50" : "border border-slate-200 hover:border-slate-300 text-slate-700 hover:bg-slate-50"}`}
                 >
                   {pkg.cta}
                 </a>
@@ -194,20 +225,20 @@ export default function Home() {
       </section>
 
       {/* TRUST */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-slate-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Built for healthcare. Designed for trust.</h2>
-          <p className="text-slate-400 mb-12">Patient data compliance isn't an afterthought — it's the foundation.</p>
+          <h2 className="text-3xl font-bold mb-4">Why teams trust us</h2>
+          <p className="text-slate-500 mb-12">We build systems that work — and keep working.</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "🔒", title: "No PHI in automations", desc: "Our workflows never handle protected health information. Booking, reminders, and lead capture stay fully compliant." },
-              { icon: "🇨🇦", title: "PIPEDA compliant", desc: "Built for Canadian privacy law. Data stays in Canada. No third-party data selling. Ever." },
-              { icon: "👥", title: "Designed around your staff", desc: "We build around how your team already works. No retraining. No disruption. Just fewer interruptions." }
+              { icon: "🔒", title: "Your data stays yours", desc: "We never store or access your business data beyond what's needed for the automation. Enterprise-grade security practices." },
+              { icon: "🛠️", title: "Built on proven tools", desc: "We use industry-standard platforms — n8n, Make, Zapier, OpenAI — so you're never locked into a proprietary system." },
+              { icon: "👥", title: "Designed around your team", desc: "We build around how your team already works. No retraining. No disruption. Just fewer manual tasks." }
             ].map((item, i) => (
-              <div key={i} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+              <div key={i} className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
                 <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm">{item.desc}</p>
+                <h3 className="text-lg font-semibold mb-2 text-slate-900">{item.title}</h3>
+                <p className="text-slate-500 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -217,60 +248,60 @@ export default function Home() {
       {/* ROI CALCULATOR */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-4">See your number</h2>
-          <p className="text-slate-400 text-center mb-10">Most clinic owners are surprised. The math is simple — the loss isn't.</p>
+          <h2 className="text-3xl font-bold text-center mb-4">See your savings</h2>
+          <p className="text-slate-500 text-center mb-10">Most business owners are surprised by how much time they're losing to manual work.</p>
           <ROICalculator />
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="py-24 px-6 bg-slate-900/50">
+      <section id="contact" className="py-24 px-6 bg-slate-50">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Get your free 3-leak audit</h2>
-          <p className="text-slate-400 mb-10">
-            15-minute call. We find the 3 biggest workflow gaps in your clinic and show you exactly what fixing them would mean in recovered revenue. No pitch, no pressure.
+          <h2 className="text-4xl font-bold mb-4">Get your free workflow audit</h2>
+          <p className="text-slate-500 mb-10">
+            15-minute call. We map your biggest workflow bottlenecks and show you exactly what automation would save. No pitch, no pressure.
           </p>
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-left">
+          <div className="bg-white border border-slate-200 rounded-2xl p-8 text-left shadow-sm">
             {formState === "success" ? (
               <div className="text-center py-8">
-                <div className="text-5xl mb-4">✅</div>
+                <div className="text-5xl mb-4">&#9989;</div>
                 <h3 className="text-2xl font-bold mb-2">Got it!</h3>
-                <p className="text-slate-400">We'll reach out within 2 business hours to schedule your audit.</p>
+                <p className="text-slate-500">We'll reach out within 2 business hours to schedule your audit.</p>
               </div>
             ) : (
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-slate-400 mb-1">Your name</label>
-                    <input type="text" placeholder="Dr. Sarah Chen" required
+                    <label className="block text-sm text-slate-600 mb-1 font-medium">Your name</label>
+                    <input type="text" placeholder="Jane Smith" required
                       value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                      className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                   </div>
                   <div>
-                    <label className="block text-sm text-slate-400 mb-1">Clinic name</label>
-                    <input type="text" placeholder="Vancouver Dental"
-                      value={formData.clinic} onChange={e => setFormData({...formData, clinic: e.target.value})}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                    <label className="block text-sm text-slate-600 mb-1 font-medium">Company name</label>
+                    <input type="text" placeholder="Acme Corp"
+                      value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})}
+                      className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-1">Email</label>
-                  <input type="email" placeholder="you@yourclinic.com" required
+                  <label className="block text-sm text-slate-600 mb-1 font-medium">Email</label>
+                  <input type="email" placeholder="you@company.com" required
                     value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                 </div>
                 <div>
-                  <label className="block text-sm text-slate-400 mb-1">Clinic website (optional)</label>
-                  <input type="url" placeholder="https://yourclinic.com"
+                  <label className="block text-sm text-slate-600 mb-1 font-medium">Website (optional)</label>
+                  <input type="url" placeholder="https://yourcompany.com"
                     value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                 </div>
                 <button type="submit" disabled={formState === "loading"}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white py-4 rounded-xl font-semibold text-lg transition mt-2">
-                  {formState === "loading" ? "Sending..." : "Book My Free Audit →"}
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white py-4 rounded-xl font-semibold text-lg transition mt-2 shadow-md shadow-indigo-200">
+                  {formState === "loading" ? "Sending..." : "Book My Free Audit"}
                 </button>
-                {formState === "error" && <p className="text-red-400 text-sm text-center">Something went wrong — email us directly at andrei@ohanaworkflow.com</p>}
-                <p className="text-slate-500 text-xs text-center">We'll reply within 2 business hours. No spam, ever.</p>
+                {formState === "error" && <p className="text-red-500 text-sm text-center">Something went wrong — email us directly at andrei@ohanaworkflow.com</p>}
+                <p className="text-slate-400 text-xs text-center">We'll reply within 2 business hours. No spam, ever.</p>
               </form>
             )}
           </div>
@@ -280,11 +311,11 @@ export default function Home() {
       <ActivityFeed />
 
       {/* FOOTER */}
-      <footer className="py-10 px-6 border-t border-slate-800">
+      <footer className="py-10 px-6 border-t border-slate-200 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <span className="text-xl font-bold">Ohana<span className="text-indigo-400">Workflow</span></span>
-          <p className="text-slate-500 text-sm">Vancouver, BC · andrei@ohanaworkflow.com</p>
-          <p className="text-slate-600 text-xs">© 2026 Ohana Workflow. All rights reserved.</p>
+          <span className="text-xl font-bold">Ohana<span className="text-indigo-600">Workflow</span></span>
+          <p className="text-slate-400 text-sm">andrei@ohanaworkflow.com</p>
+          <p className="text-slate-400 text-xs">&copy; 2026 Ohana Workflow. All rights reserved.</p>
         </div>
       </footer>
 
