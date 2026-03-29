@@ -53,16 +53,16 @@ export default function ActivityFeed() {
 
   return (
     <div className="fixed bottom-6 right-6 w-80 z-40 hidden lg:block">
-      <div className="bg-white/95 backdrop-blur border border-slate-200 rounded-xl overflow-hidden shadow-lg">
+      <div className="bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl overflow-hidden shadow-lg">
         <div className="px-4 py-2.5 border-b border-slate-100 flex items-center gap-2">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-          <span className="text-xs font-medium text-slate-600">OhanaWorkflow — live activity</span>
+          <span className="text-xs font-medium text-slate-500">OhanaWorkflow — live activity</span>
         </div>
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-slate-50">
           {items.map(item => (
             <div key={item.id} className="px-4 py-3">
               <p className="text-xs text-slate-600 leading-relaxed">{item.text}</p>
-              <p className="text-xs text-slate-400 mt-1">{item.time}</p>
+              <p className="text-[11px] text-slate-400 mt-1">{item.time}</p>
             </div>
           ))}
         </div>

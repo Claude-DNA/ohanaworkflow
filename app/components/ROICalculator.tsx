@@ -7,8 +7,8 @@ export default function ROICalculator() {
 
   const hr = parseFloat(hourlyRate) || 0;
   const hw = parseFloat(hoursWasted) || 0;
-  const teamSize = 5; // assume small team
-  const automationCapture = 0.7; // 70% of manual work is automatable
+  const teamSize = 5;
+  const automationCapture = 0.7;
   const monthlySavings = Math.round(hr * hw * teamSize * automationCapture * 4.3);
   const annualSavings = monthlySavings * 12;
   const showResult = hr > 0 && hw > 0;
@@ -32,7 +32,7 @@ export default function ROICalculator() {
               placeholder="50"
               value={hourlyRate}
               onChange={e => setHourlyRate(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-lg pl-8 pr-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+              className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition"
             />
           </div>
           <p className="text-slate-400 text-xs mt-1">Include salary, benefits, overhead</p>
@@ -46,14 +46,14 @@ export default function ROICalculator() {
             placeholder="15"
             value={hoursWasted}
             onChange={e => setHoursWasted(e.target.value)}
-            className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+            className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent focus:bg-white transition"
           />
           <p className="text-slate-400 text-xs mt-1">Data entry, copy-paste, manual follow-ups, reporting</p>
         </div>
       </div>
 
       {showResult && (
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 mb-6 animate-fade-in-up">
           <p className="text-emerald-700 text-sm font-medium mb-1">Your estimated monthly savings</p>
           <p className="text-5xl font-bold text-slate-900 mb-1">
             ${monthlySavings.toLocaleString()}
@@ -70,7 +70,7 @@ export default function ROICalculator() {
       {showResult && (
         <a
           href="#contact"
-          className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-semibold text-lg transition shadow-md shadow-indigo-200"
+          className="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-4 rounded-xl font-semibold text-lg transition shadow-lg shadow-indigo-200/50"
         >
           Get your free workflow audit
         </a>

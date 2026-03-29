@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ohana Workflow — AI Automation Agency",
-  description: "We build custom AI automation systems that save your team 20+ hours per week. Intelligent workflows for operations, sales, support, and more.",
+  title: "OhanaWorkflow — AI Automation for Any Business",
+  description: "We build custom AI automation systems that save your team 20+ hours per week. Intelligent workflows for operations, sales, support, and more. Based in Vancouver, BC.",
   openGraph: {
-    title: "Ohana Workflow — AI Automation Agency",
+    title: "OhanaWorkflow — AI Automation for Any Business",
     description: "Custom AI automation systems that save your team 20+ hours per week.",
     url: "https://ohanaworkflow.com",
   }
