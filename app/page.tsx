@@ -93,18 +93,18 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-neural-50 text-neural-800">
+    <main className="min-h-screen bg-void text-neural-800">
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-neural-200/50">
+      <nav className="fixed top-0 w-full z-50 nav-blur">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="text-xl font-bold tracking-tight text-neural-900">
+          <span className="text-xl font-bold tracking-tight text-white">
             Ohana<span className="gradient-text">Workflow</span>
           </span>
           <div className="flex items-center gap-6">
-            <a href="#how" className="hidden sm:block text-sm text-neural-400 hover:text-neural-700 transition">How it works</a>
-            <a href="#industries" className="hidden sm:block text-sm text-neural-400 hover:text-neural-700 transition">Industries</a>
-            <a href="#pricing" className="hidden sm:block text-sm text-neural-400 hover:text-neural-700 transition">Pricing</a>
+            <a href="#how" className="hidden sm:block text-sm text-neural-500 hover:text-accent-blue transition">How it works</a>
+            <a href="#industries" className="hidden sm:block text-sm text-neural-500 hover:text-accent-blue transition">Industries</a>
+            <a href="#pricing" className="hidden sm:block text-sm text-neural-500 hover:text-accent-blue transition">Pricing</a>
             <a
               href="#contact"
               className="bg-gradient-to-r from-accent-blue to-accent-purple hover:opacity-90 text-white px-5 py-2 rounded-xl text-sm font-semibold transition shadow-lg shadow-accent-blue/20"
@@ -116,52 +116,56 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="hero-gradient relative pt-40 pb-32 px-6 overflow-hidden">
+      <section className="hero-gradient relative pt-44 pb-36 px-6 overflow-hidden">
+        {/* Gradient mesh */}
+        <div className="gradient-mesh" />
         {/* Neural particle field */}
         <div className="neural-particles" />
         <div className="node-field">
           <div className="node" /><div className="node" /><div className="node" /><div className="node" />
           <div className="node" /><div className="node" /><div className="node" /><div className="node" />
+          <div className="node" /><div className="node" /><div className="node" /><div className="node" />
           <div className="node-line" /><div className="node-line" /><div className="node-line" /><div className="node-line" />
+          <div className="node-line" /><div className="node-line" />
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-5xl mx-auto text-center relative z-10">
           <div className="inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full mb-8">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-neural-600">AI Automation Agency &middot; Vancouver, BC</span>
+            <div className="w-2 h-2 bg-accent-green rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-neural-500">AI Automation Agency &middot; Vancouver, BC</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold leading-[1.08] mb-7 text-neural-900 tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 text-white tracking-tight">
             Your team is doing work<br />
             <span className="gradient-text">a machine should handle.</span>
           </h1>
-          <p className="text-xl text-neural-500 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-neural-500 mb-14 max-w-2xl mx-auto leading-relaxed font-light">
             We build custom AI automation systems that save your team 20+ hours per week.
             Intelligent workflows for operations, sales, support, and everything in between.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
-              className="bg-gradient-to-r from-accent-blue to-accent-purple hover:opacity-90 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition glow-pulse"
+              className="bg-gradient-to-r from-accent-blue to-accent-purple hover:opacity-90 text-white px-10 py-5 rounded-2xl font-semibold text-lg transition glow-pulse"
             >
               Get Your Free Workflow Audit
             </a>
             <a
               href="#how"
-              className="glass-card hover:bg-white/90 text-neural-700 px-8 py-4 rounded-2xl font-semibold text-lg transition"
+              className="glass-card hover:border-accent-blue/20 text-neural-700 px-10 py-5 rounded-2xl font-semibold text-lg transition"
             >
               See How It Works
             </a>
           </div>
-          <p className="text-neural-400 text-sm mt-6 font-light">No obligation. 15-minute call. We show you exactly where you&apos;re losing time.</p>
+          <p className="text-neural-500 text-sm mt-8 font-light">No obligation. 15-minute call. We show you exactly where you&apos;re losing time.</p>
         </div>
       </section>
 
       {/* PAIN POINTS */}
-      <section className="py-32 px-6">
+      <section className="py-32 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wider gradient-text">The Problem</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">Sound familiar?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">Sound familiar?</h2>
             <p className="text-neural-500 max-w-xl mx-auto font-light">These are the workflow leaks we find in almost every business we audit.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -197,13 +201,13 @@ export default function Home() {
                 stat: "64% of customers expect real-time responses regardless of business hours"
               }
             ].map((item, i) => (
-              <div key={i} className="glass-card-solid rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 flex items-center justify-center text-accent-blue mb-5 group-hover:scale-110 transition-transform">
+              <div key={i} className="glass-card-solid rounded-2xl p-8 group holo-card">
+                <div className="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-5 group-hover:shadow-[0_0_20px_rgba(0,212,255,0.2)] transition-all duration-500">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-neural-900 group-hover:text-accent-blue transition">{item.title}</h3>
+                <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-accent-blue transition">{item.title}</h3>
                 <p className="text-neural-500 mb-5 leading-relaxed font-light">{item.desc}</p>
-                <p className="text-sm font-medium gradient-text border-t border-neural-200/60 pt-4">{item.stat}</p>
+                <p className="text-sm font-medium gradient-text border-t border-white/5 pt-4">{item.stat}</p>
               </div>
             ))}
           </div>
@@ -215,7 +219,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wider gradient-text">The Process</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">How it works</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">How it works</h2>
             <p className="text-neural-500 font-light">We plug AI into your existing tools — not replace them.</p>
           </div>
           <div className="space-y-6">
@@ -224,10 +228,10 @@ export default function Home() {
               { step: "02", title: "We build your custom system", desc: "In 1-3 weeks, we deploy AI automations tailored to your business: lead routing, data sync, document processing, customer follow-ups, and more." },
               { step: "03", title: "Your team gets hours back", desc: "Repetitive work disappears. Leads get instant responses. Data flows between your tools automatically. Your team focuses on work that actually matters." },
             ].map((item, i) => (
-              <div key={i} className="glass-card-solid rounded-2xl p-8 hover:shadow-xl transition-all duration-300 flex gap-6 group">
-                <div className="text-5xl font-bold gradient-text shrink-0 opacity-60 group-hover:opacity-100 transition">{item.step}</div>
+              <div key={i} className="glass-card-solid rounded-2xl p-8 flex gap-6 group holo-card step-connector">
+                <div className="text-5xl font-bold gradient-text shrink-0 opacity-50 group-hover:opacity-100 transition">{item.step}</div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 text-neural-900">{item.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
                   <p className="text-neural-500 leading-relaxed font-light">{item.desc}</p>
                 </div>
               </div>
@@ -241,16 +245,16 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wider gradient-text">Who We Help</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">Industries we serve</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">Industries we serve</h2>
             <p className="text-neural-500 max-w-xl mx-auto font-light">AI automation works for any business with repeatable processes. Here are a few we know inside out.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {INDUSTRIES.map((item, i) => (
-              <a key={i} href={item.href} className="glass-card-solid rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group block">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 flex items-center justify-center text-accent-blue mb-4 group-hover:scale-110 transition-transform">
+              <a key={i} href={item.href} className="glass-card-solid rounded-2xl p-8 group block holo-card">
+                <div className="w-12 h-12 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-4 group-hover:shadow-[0_0_20px_rgba(0,212,255,0.2)] transition-all duration-500">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-neural-900 group-hover:text-accent-blue transition">{item.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-accent-blue transition">{item.title}</h3>
                 <p className="text-neural-500 text-sm leading-relaxed font-light mb-3">{item.desc}</p>
                 <span className="text-sm font-medium gradient-text inline-flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   Learn more
@@ -269,7 +273,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wider gradient-text">Capabilities</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">What we automate</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">What we automate</h2>
             <p className="text-neural-500 font-light">If it&apos;s repetitive, rule-based, or time-consuming — we can probably automate it.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -347,11 +351,11 @@ export default function Home() {
                 desc: "Keep all your systems in sync, automatically"
               },
             ].map((item, i) => (
-              <div key={i} className="glass-card-solid rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 flex items-center justify-center text-accent-blue mb-4 group-hover:scale-110 transition-transform">
+              <div key={i} className="glass-card-solid rounded-2xl p-6 group holo-card">
+                <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-4 group-hover:shadow-[0_0_15px_rgba(0,212,255,0.2)] transition-all duration-500">
                   {item.icon}
                 </div>
-                <h3 className="font-semibold mb-1.5 text-neural-900">{item.title}</h3>
+                <h3 className="font-semibold mb-1.5 text-white">{item.title}</h3>
                 <p className="text-neural-500 text-sm font-light">{item.desc}</p>
               </div>
             ))}
@@ -364,7 +368,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-sm font-semibold uppercase tracking-wider gradient-text">Pricing</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">Simple, clear packages</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">Simple, clear packages</h2>
             <p className="text-neural-500 font-light">No surprise costs. No long-term lock-in. Cancel anytime.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -397,24 +401,24 @@ export default function Home() {
                 highlight: false
               }
             ].map((pkg, i) => (
-              <div key={i} className={`rounded-2xl p-8 transition-all duration-300 ${
+              <div key={i} className={`rounded-2xl p-8 transition-all duration-500 ${
                 pkg.highlight
-                  ? "bg-gradient-to-br from-accent-blue to-accent-purple text-white shadow-2xl shadow-accent-blue/20 scale-[1.03] relative"
-                  : "glass-card-solid hover:shadow-xl"
+                  ? "bg-void-card pricing-highlight shadow-2xl shadow-accent-blue/10 scale-[1.03] relative"
+                  : "glass-card-solid"
               }`}>
                 {pkg.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-amber text-neural-900 text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-accent-blue to-accent-purple text-white text-xs font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-lg">
                     Most Popular
                   </div>
                 )}
-                <h3 className={`text-xl font-bold mb-1 ${pkg.highlight ? "text-white" : "text-neural-900"}`}>{pkg.name}</h3>
-                <div className={`text-4xl font-bold mb-1 ${pkg.highlight ? "text-white" : "text-neural-900"}`}>{pkg.price}</div>
-                <div className={`text-sm mb-5 ${pkg.highlight ? "text-white/70" : "text-neural-400"}`}>{pkg.period}</div>
-                <p className={`text-sm mb-6 leading-relaxed ${pkg.highlight ? "text-white/80" : "text-neural-500"} font-light`}>{pkg.desc}</p>
+                <h3 className="text-xl font-bold mb-1 text-white">{pkg.name}</h3>
+                <div className="text-4xl font-bold mb-1 gradient-text">{pkg.price}</div>
+                <div className="text-sm mb-5 text-neural-500">{pkg.period}</div>
+                <p className="text-sm mb-6 leading-relaxed text-neural-500 font-light">{pkg.desc}</p>
                 <ul className="space-y-3 mb-8">
                   {pkg.features.map((f, j) => (
-                    <li key={j} className={`flex items-start gap-2.5 text-sm ${pkg.highlight ? "text-white/90" : "text-neural-600"}`}>
-                      <svg className={`w-5 h-5 shrink-0 mt-0.5 ${pkg.highlight ? "text-white/70" : "text-accent-blue"}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <li key={j} className="flex items-start gap-2.5 text-sm text-neural-600">
+                      <svg className="w-5 h-5 shrink-0 mt-0.5 text-accent-blue" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                       </svg>
                       {f}
@@ -425,8 +429,8 @@ export default function Home() {
                   href="#contact"
                   className={`block text-center py-3.5 rounded-xl font-semibold transition ${
                     pkg.highlight
-                      ? "bg-white text-accent-blue hover:bg-white/90 shadow-lg"
-                      : "bg-gradient-to-r from-accent-blue to-accent-purple text-white hover:opacity-90 shadow-lg shadow-accent-blue/10"
+                      ? "bg-gradient-to-r from-accent-blue to-accent-purple text-white hover:opacity-90 glow-pulse"
+                      : "border border-white/10 text-white hover:border-accent-blue/30 hover:bg-accent-blue/5"
                   }`}
                 >
                   {pkg.cta}
@@ -441,7 +445,7 @@ export default function Home() {
       <section className="py-32 px-6 section-alt">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-sm font-semibold uppercase tracking-wider gradient-text">Trust</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">Why teams trust us</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">Why teams trust us</h2>
           <p className="text-neural-500 mb-16 font-light">We build systems that work — and keep working.</p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -473,11 +477,11 @@ export default function Home() {
                 desc: "We build around how your team already works. No retraining. No disruption. Just fewer manual tasks."
               }
             ].map((item, i) => (
-              <div key={i} className="glass-card-solid rounded-2xl p-8">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 flex items-center justify-center text-accent-blue mb-5 mx-auto">
+              <div key={i} className="glass-card-solid rounded-2xl p-8 holo-card">
+                <div className="w-12 h-12 rounded-xl bg-accent-purple/10 flex items-center justify-center text-accent-purple mb-5 mx-auto">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-neural-900">{item.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-white">{item.title}</h3>
                 <p className="text-neural-500 text-sm leading-relaxed font-light">{item.desc}</p>
               </div>
             ))}
@@ -490,7 +494,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold uppercase tracking-wider gradient-text">ROI</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">See your savings</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">See your savings</h2>
             <p className="text-neural-500 font-light">Most business owners are surprised by how much time they&apos;re losing to manual work.</p>
           </div>
           <ROICalculator />
@@ -501,19 +505,19 @@ export default function Home() {
       <section id="contact" className="py-32 px-6 section-alt">
         <div className="max-w-2xl mx-auto text-center">
           <span className="text-sm font-semibold uppercase tracking-wider gradient-text">Get Started</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-neural-900">Get your free workflow audit</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 tracking-tight text-white">Get your free workflow audit</h2>
           <p className="text-neural-500 mb-12 font-light">
             15-minute call. We map your biggest workflow bottlenecks and show you exactly what automation would save. No pitch, no pressure.
           </p>
           <div className="glass-card-solid rounded-2xl p-8 text-left">
             {formState === "success" ? (
               <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <div className="w-16 h-16 rounded-full bg-accent-green/10 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-accent-green" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-neural-900">Got it!</h3>
+                <h3 className="text-2xl font-bold mb-2 text-white">Got it!</h3>
                 <p className="text-neural-500 font-light">We&apos;ll reach out within 2 business hours to schedule your audit.</p>
               </div>
             ) : (
@@ -523,33 +527,33 @@ export default function Home() {
                     <label className="block text-sm text-neural-600 mb-1.5 font-medium">Your name</label>
                     <input type="text" placeholder="Jane Smith" required
                       value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-neural-50 border border-neural-200 rounded-xl px-4 py-3 text-neural-800 placeholder-neural-400 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-transparent focus:bg-white transition" />
+                      className="w-full input-dark rounded-xl px-4 py-3" />
                   </div>
                   <div>
                     <label className="block text-sm text-neural-600 mb-1.5 font-medium">Company name</label>
                     <input type="text" placeholder="Acme Corp"
                       value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})}
-                      className="w-full bg-neural-50 border border-neural-200 rounded-xl px-4 py-3 text-neural-800 placeholder-neural-400 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-transparent focus:bg-white transition" />
+                      className="w-full input-dark rounded-xl px-4 py-3" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm text-neural-600 mb-1.5 font-medium">Email</label>
                   <input type="email" placeholder="you@company.com" required
                     value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-neural-50 border border-neural-200 rounded-xl px-4 py-3 text-neural-800 placeholder-neural-400 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-transparent focus:bg-white transition" />
+                    className="w-full input-dark rounded-xl px-4 py-3" />
                 </div>
                 <div>
                   <label className="block text-sm text-neural-600 mb-1.5 font-medium">Website (optional)</label>
                   <input type="url" placeholder="https://yourcompany.com"
                     value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})}
-                    className="w-full bg-neural-50 border border-neural-200 rounded-xl px-4 py-3 text-neural-800 placeholder-neural-400 focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-transparent focus:bg-white transition" />
+                    className="w-full input-dark rounded-xl px-4 py-3" />
                 </div>
                 <button type="submit" disabled={formState === "loading"}
                   className="w-full bg-gradient-to-r from-accent-blue to-accent-purple hover:opacity-90 disabled:opacity-60 text-white py-4 rounded-xl font-semibold text-lg transition mt-2 glow-pulse">
                   {formState === "loading" ? "Sending..." : "Book My Free Audit"}
                 </button>
-                {formState === "error" && <p className="text-red-500 text-sm text-center">Something went wrong — email us directly at andrei@ohanaworkflow.com</p>}
-                <p className="text-neural-400 text-xs text-center font-light">We&apos;ll reply within 2 business hours. No spam, ever.</p>
+                {formState === "error" && <p className="text-red-400 text-sm text-center">Something went wrong — email us directly at andrei@ohanaworkflow.com</p>}
+                <p className="text-neural-500 text-xs text-center font-light">We&apos;ll reply within 2 business hours. No spam, ever.</p>
               </form>
             )}
           </div>
@@ -559,20 +563,20 @@ export default function Home() {
       <ActivityFeed />
 
       {/* FOOTER */}
-      <footer className="py-16 px-6 border-t border-neural-200/50 bg-white">
+      <footer className="py-16 px-6 border-t border-white/5 bg-void">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <span className="text-xl font-bold tracking-tight text-neural-900">
+          <span className="text-xl font-bold tracking-tight text-white">
             Ohana<span className="gradient-text">Workflow</span>
           </span>
           <div className="flex items-center gap-6">
-            <a href="#how" className="text-neural-400 hover:text-neural-600 text-sm transition">How it works</a>
-            <a href="#industries" className="text-neural-400 hover:text-neural-600 text-sm transition">Industries</a>
-            <a href="#pricing" className="text-neural-400 hover:text-neural-600 text-sm transition">Pricing</a>
-            <a href="#contact" className="text-neural-400 hover:text-neural-600 text-sm transition">Contact</a>
+            <a href="#how" className="text-neural-500 hover:text-accent-blue text-sm transition">How it works</a>
+            <a href="#industries" className="text-neural-500 hover:text-accent-blue text-sm transition">Industries</a>
+            <a href="#pricing" className="text-neural-500 hover:text-accent-blue text-sm transition">Pricing</a>
+            <a href="#contact" className="text-neural-500 hover:text-accent-blue text-sm transition">Contact</a>
           </div>
           <div className="text-right">
-            <p className="text-neural-400 text-sm">andrei@ohanaworkflow.com</p>
-            <p className="text-neural-300 text-xs mt-1">&copy; 2026 OhanaWorkflow &middot; Vancouver, BC</p>
+            <p className="text-neural-500 text-sm">andrei@ohanaworkflow.com</p>
+            <p className="text-neural-500/50 text-xs mt-1">&copy; 2026 OhanaWorkflow &middot; Vancouver, BC</p>
           </div>
         </div>
       </footer>
