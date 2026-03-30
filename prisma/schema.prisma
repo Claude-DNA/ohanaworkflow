@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum LeadStatus {
+  NEW
+  AUTO_RESPONDED
+  CONTACTED
+  QUALIFIED
+  CLOSED_WON
+  CLOSED_LOST
+  CLOSED_UNRESPONSIVE
+}
+
+model Lead {
+  id            String     @id @default(cuid())
+  name          String
+  company       String?
+  email         String
+  website       String?
+  source        String     @default("website-form")
+  status        LeadStatus @default(NEW)
+  notes         String?
+  afterHours    Boolean    @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  contactedAt   DateTime?
+  closedAt      DateTime?
+  closedReason  String?
+  sequenceStep  Int        @default(0)
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}
