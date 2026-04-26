@@ -1,17 +1,22 @@
 "use client";
 import { useState, useEffect } from "react";
 
+// NOTE: This component is no longer imported on the home page.
+// Kept here in case you want to bring the live-activity ticker back
+// as an option. Updated to the light theme so it works without
+// touching it again.
+
 const FEED_ITEMS = [
-  "Lead response automation deployed — follow-up time cut from 3h to 90 seconds",
-  "Connected CRM + email + Slack for a SaaS team — 6 manual steps eliminated",
-  "Invoice processing workflow live — 200+ docs/month now fully automated",
-  "Onboarding sequence deployed — new client setup down from 2 days to 20 minutes",
-  "Customer support triage bot live — 42% of tickets resolved without human touch",
-  "Weekly reporting automation built — team saves 5 hours every Monday",
-  "Lead qualification workflow deployed — sales team handling 3x more leads",
-  "Data sync between Shopify + HubSpot live — zero manual entry",
-  "Contract review automation triggered — key terms extracted in under 10 seconds",
-  "Employee onboarding flow live — IT provisioning now fully hands-off",
+  "Lead response automation deployed - follow-up time cut from 3h to 90 seconds",
+  "Connected CRM + email + Slack for a SaaS team - 6 manual steps eliminated",
+  "Invoice processing workflow live - 200+ docs/month now fully automated",
+  "Onboarding sequence deployed - new client setup down from 2 days to 20 minutes",
+  "Customer support triage bot live - 42% of tickets resolved without human touch",
+  "Weekly reporting automation built - team saves 5 hours every Monday",
+  "Lead qualification workflow deployed - sales team handling 3x more leads",
+  "Data sync between Shopify + HubSpot live - zero manual entry",
+  "Contract review automation triggered - key terms extracted in under 10 seconds",
+  "Employee onboarding flow live - IT provisioning now fully hands-off",
 ];
 
 export default function ActivityFeed() {
@@ -31,38 +36,38 @@ export default function ActivityFeed() {
     setIndex(3);
 
     const interval = setInterval(() => {
-      setItems(prev => {
+      setItems((prev) => {
         const next = [
           {
             text: FEED_ITEMS[index % FEED_ITEMS.length],
             time: "just now",
             id: Date.now(),
           },
-          ...prev.map(item => ({
+          ...prev.map((item) => ({
             ...item,
             time: item.time === "just now" ? "1m ago" : item.time,
           })),
         ].slice(0, 4);
         return next;
       });
-      setIndex(i => i + 1);
+      setIndex((i) => i + 1);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [index]);
 
   return (
     <div className="fixed bottom-6 right-6 w-80 z-40 hidden lg:block">
-      <div className="glass-card-solid rounded-xl overflow-hidden">
-        <div className="px-4 py-2.5 border-b border-white/5 flex items-center gap-2">
-          <div className="w-2 h-2 bg-accent-green rounded-full animate-pulse"></div>
-          <span className="text-xs font-medium text-neural-500">OhanaWorkflow — live activity</span>
+      <div className="card-static rounded-xl overflow-hidden">
+        <div className="px-4 py-2.5 border-b border-neural-200 flex items-center gap-2">
+          <span className="w-2 h-2 bg-accent-green rounded-full animate-pulse"></span>
+          <span className="text-xs font-medium text-neural-500">OhanaWorkflow - live activity</span>
         </div>
-        <div className="divide-y divide-white/5">
-          {items.map(item => (
+        <div className="divide-y divide-neural-200">
+          {items.map((item) => (
             <div key={item.id} className="px-4 py-3">
-              <p className="text-xs text-neural-600 leading-relaxed">{item.text}</p>
-              <p className="text-[11px] text-neural-500 mt-1">{item.time}</p>
+              <p className="text-xs text-neural-700 leading-relaxed">{item.text}</p>
+              <p className="text-[11px] text-neural-400 mt-1">{item.time}</p>
             </div>
           ))}
         </div>
